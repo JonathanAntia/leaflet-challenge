@@ -59,23 +59,20 @@ d3.json(earthquakeDataURL).then(function(data){
             }).bindPopup(`<div class='info'>${date}<br>Depth: ${earthquake.geometry.coordinates[2]} km</div>`)
             .addTo(myMap);   
         }
-        // create a legend
-        const legend = L.control({position: 'bottomright'});
-        legend.onAdd = function(map){
-            const div = L.DomUtil.create('div', 'info legend');
-            labels = ['<strong>EQ Significance</strong>'],
-            categories = ['0-250', '250-500', '500-750', '750-1000', '1000+'],
-            colors = ['#FFD1A9','#FF9E79','#FB6D4C','#C23B22','#8A0000'];
-
-            for (let i=0; i < categories.length; i++){
-                div.innerHTML +=
-                labels.push(
-                    '<i class="square i" style="background:' + colors[i] +'"></i>'+
-                    (categories[i]? categories[i]: '+'));
-            }
-            div.innerHTML = labels.join('<br>');
-            return div;
-        };
-        legend.addTo(myMap);
     })
+    // create a legend
+    const legend = L.control({ position: "bottomright" });
+
+    legend.onAdd = function(map) {
+    var div = L.DomUtil.create("div", "legend");
+    div.innerHTML += "<h4>EQ Significance</h4>";
+    div.innerHTML += '<i style="background: #FFD1A9"></i><span>0-250</span><br>';
+    div.innerHTML += '<i style="background: #FF9E79"></i><span>250-500</span><br>';
+    div.innerHTML += '<i style="background: #FB6D4C"></i><span>500-750</span><br>';
+    div.innerHTML += '<i style="background: #C23B22"></i><span>750-1000</span><br>';
+    div.innerHTML += '<i style="background: #8A0000"></i><span>1000+</span><br>';
+    return div;
+    };
+
+legend.addTo(myMap);
 });
