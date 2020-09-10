@@ -1,20 +1,49 @@
 // code for creating Advanced Map (Level 2)
 
-// create a map object
-const myMap = L.map('map', {
-    center: [37.77,-122.42],
-    zoom:4
-});
-
-// adding tile layer
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+// adding dark tile layer
+const dark = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     id: 'mapbox/dark-v10',
     tileSize: 512,
     zoomOffset: -1,
     accessToken: API_KEY
-}).addTo(myMap);
+})
+
+// adding light tile layer
+const light = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/light-v10',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: API_KEY
+})
+
+// adding satellite tile layer
+const satellite = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/satellite-v9',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: API_KEY
+})
+
+// create a map object
+const myMap = L.map('map', {
+    center: [37.77,-122.42],
+    zoom:4,
+    layers: [dark]
+});
+
+const baseMaps = {
+    "Dark": dark,
+    "Light": light,
+    "Satellite": satellite
+};
+
+L.control.layers(baseMaps).addTo(myMap);
 
 // link to USGS earthquake data
 const earthquakeDataURL = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_month.geojson';
@@ -51,7 +80,7 @@ d3.json(earthquakeDataURL).then(function(data){
     earthquakes.forEach(earthquake=>{
         const date = convertDate(earthquake.properties.time);
         if (earthquake.geometry.coordinates){
-            L.circle([earthquake.geometry.coordinates[1],earthquake.geometry.coordinates[0]],{
+            const mag = L.circle([earthquake.geometry.coordinates[1],earthquake.geometry.coordinates[0]],{
                 color: 'blank',
                 fillColor: chooseColor(earthquake.properties.sig),
                 fillOpacity: 0.75,
@@ -95,7 +124,7 @@ function strokeWeight (slip_rate){
 // retrieve the fault data and add each to the map
 d3.json(faultData).then(function(data){
     console.log(data);
-    L.geoJson(data, {
+    const faults = L.geoJson(data, {
         style: function(feature){
             return{
                 color: 'white',
@@ -103,4 +132,4 @@ d3.json(faultData).then(function(data){
             }
         }
     }).addTo(myMap);
-})
+});
