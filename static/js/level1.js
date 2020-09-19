@@ -56,7 +56,7 @@ d3.json(earthquakeDataURL).then(function(data){
                 fillColor: chooseColor(earthquake.properties.sig),
                 fillOpacity: 0.75,
                 radius: earthquake.properties.mag*10000
-            }).bindPopup(`<div class='info'>${date}<br>Depth: ${earthquake.geometry.coordinates[2]} km</div>`)
+            }).bindPopup(`<div class='info'>${date}<hr>Location: ${earthquake.properties.place}<hr>Depth: ${earthquake.geometry.coordinates[2]} km<hr> Magnitude: ${earthquake.properties.mag}<hr> Significance: ${earthquake.properties.sig}</div>`)
             .addTo(myMap);   
         }
     })
