@@ -15,13 +15,11 @@ The first task is to optain and visualize the dataset.
 The USGS provides earthquake data in a number of different formats, updated every 5 minutes.
 This project uses the dataset for the past 30 Days M1.0+ Earthquakes:
 
-https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_month.geojson - geojson!
-[GitHub](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_month.geojson)
+https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_month.geojson - geojson
 
 The dataset was obtained from the USGS Earthquake Hazards Program:
 
-https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php - USGS Earthquake Hazards Program!
-[GitHub](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php)
+https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php - USGS Earthquake Hazards Program
 
 ## Level 2: More Data
 
