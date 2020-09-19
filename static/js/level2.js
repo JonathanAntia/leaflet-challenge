@@ -66,7 +66,6 @@ const faultData = 'static/data/qfaults_latest_quaternary.geojson';
 
 // retrieve the fault data and add each to the map
 d3.json(faultData).then(function(data){
-    console.log(data);
     const faults = L.geoJson(data, {
         style: function(feature){
             return{
@@ -78,7 +77,7 @@ d3.json(faultData).then(function(data){
             
     // create a map object
     const myMap = L.map('map', {
-        center: [37.77,-122.42],
+        center: [50,-122.42],
         zoom:4,
         layers: [dark, faults]
     });
@@ -98,7 +97,7 @@ d3.json(faultData).then(function(data){
                     fillColor: chooseColor(earthquake.properties.sig),
                     fillOpacity: 0.75,
                     radius: earthquake.properties.mag*10000
-                }).bindPopup(`<div class='info'>${date}<br>Depth: ${earthquake.geometry.coordinates[2]} km</div>`)
+                }).bindPopup(`<div class='info'>${date}<hr>Depth: ${earthquake.geometry.coordinates[2]} km<hr> Magnitude: ${earthquake.properties.mag}<hr> Significance: ${earthquake.properties.sig}</div>`)
                 .addTo(myMap);   
             }
         })
