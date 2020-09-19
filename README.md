@@ -49,7 +49,7 @@ In this step we are going to:
 
 * Include popups that provide additional information about the fault when a fault-line is clicked.
 
-![App GIF](/images/earthquakesGIF.mp4)
+![App GIF](/images/appgif.gif)
 
 # Observations:
 
