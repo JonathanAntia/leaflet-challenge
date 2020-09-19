@@ -1,5 +1,4 @@
-![USGS Logo](/images/USGSlogo.png)
-Format: ![Alt Text](url)
+![USGS Logo](/images/USGSLogo.png)
 
 The United States Geological Survey, or USGS for short, is responsible for providing scientific data about natural hazards, the health of our ecosystems and environment; and the impacts of climate and land-use change. Their scientists develop new methods and tools to supply timely, relevant, and useful information about the Earth and its processes.
 
@@ -9,8 +8,7 @@ This project aims to create visualizations of USGS earthquake data. They collect
 
 ## Level 1: Basic Visualization
 
-![Basic Visualization of Earthquake Magnitudes](/images/NothAmerica_level1.png)
-Format: ![Alt Text](url)
+![Basic Visualization of Earthquake Magnitudes](/images/NorthAmerica_level1.png)
 
 The first task is to optain and visualize the dataset.
 
@@ -28,7 +26,6 @@ https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php - USGS Earthquake 
 ## Level 2: More Data
 
 ![Visualization of Fault Lines and Earthquake Magnitude](/images/NorthAmerica_level2.png)
-Format: ![Alt Text](url)
 
 Other datasets help ilustrate the relationship between earthquakes and fault-lines. The dataset is provided in the static/data folder.
 
@@ -52,5 +49,12 @@ In this step we are going to:
 
 * Include popups that provide additional information about the fault when a fault-line is clicked.
 
-![App GIF](/images/Earthquakes - Google Chrome 2020-09-19 16-04-48.mp4)
-Format: ![Alt Text](url)
+![App GIF](/images/earthquakesGIF.mp4)
+
+# Observations:
+
+The distribution of earthquakes shows good correlation with the distribution of active fault-lines.
+
+More numerous and larger earthquakes occur along zones of active subduction, such as around the edges of the pacific ocean basin, whereas other continental margins are less active.
+
+In the United States, some earthquakes are reported from the Midwest and fewer from the East Coast. These earthquakes are not asssociated with major faults and in some cases occur in close association with areas of active hydrocarbon exploration.
